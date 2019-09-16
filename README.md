@@ -13,6 +13,6 @@ Vagrant is a tool that will allow us to create a virtual environment easily and 
 Ansible is an infrastructure automation engine that automates software configuration management. It is agentless and allows us to use SSH keys for connecting to remote machines. Ansible playbooks are written in yaml and offer inventory management in simple text files.
 
 ## Prerequisites
-Vagrant should be installed on your machine. Installation binaries can be found here.
-Oracle VirtualBox can be used as a Vagrant provider or make use of similar providers as described in Vagrant’s official documentation.
-Ansible should be installed in your machine. Refer to the Ansible installation guide for platform specific installation.
+Vagrant should be installed on your machine. Installation binaries can be found [here](https://www.vagrantup.com/downloads.html).
+Oracle VirtualBox can be used as a Vagrant provider or make use of similar providers as described in Vagrant’s [official documentation.](https://www.vagrantup.com/docs/providers/)
+Ansible should be installed in your machine. Refer to the Ansible installation guide for [platform specific installation.](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
