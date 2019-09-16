@@ -16,3 +16,9 @@ Ansible is an infrastructure automation engine that automates software configura
 Vagrant should be installed on your machine. Installation binaries can be found [here](https://www.vagrantup.com/downloads.html).
 Oracle VirtualBox can be used as a Vagrant provider or make use of similar providers as described in Vagrant’s [official documentation.](https://www.vagrantup.com/docs/providers/)
 Ansible should be installed in your machine. Refer to the Ansible installation guide for [platform specific installation.](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html)
+Ansible install on Mac should use Python 3.x and pip3. To ensure ansible is using pip3, use the following commands
+
+'''$ pip3 install ansible
+$ ansible --version | grep "python version"
+  python version = 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52) [Clang 6.0 (clang-600.0.57)]'''
+  
