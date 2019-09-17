@@ -92,7 +92,7 @@
     register: join_command
   - name: Copy join command to local file
     local_action: copy content="{{ join_command.stdout_lines[0] }}" dest="./join-command" 
-    become_user: jasonpoley
+    become_user: nicktyson
   handlers:
     - name: docker status
       service: name=docker state=started
