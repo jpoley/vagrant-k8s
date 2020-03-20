@@ -1,5 +1,8 @@
 # vagrant-k8s
-Kubernetes Vagrant with Virtualbox
+Kubernetes Vagrant with Virtualbox 
+Here is a view of it running.
+https://asciinema.org/a/DQdPRwmqW1P4jdHVHkhcplvGi
+
 
 # Objective
 This blog post describes the steps required to setup a multi node Kubernetes cluster for development purposes. This setup provides a production-like cluster that can be setup on your local machine.
@@ -16,3 +19,6 @@ Ansible is an infrastructure automation engine that automates software configura
 Vagrant should be installed on your machine. Installation binaries can be found here.
 Oracle VirtualBox can be used as a Vagrant provider or make use of similar providers as described in Vagrant’s official documentation.
 Ansible should be installed in your machine. Refer to the Ansible installation guide for platform specific installation.
+
+## Why does this exist? 
+its an alternative to a more true virtualized multinode cluster for playing and learning, since most cloud providers charge $.10/hr for their k8s control planes, and sometimes minikube isn't enough.  Feedback welcome.
