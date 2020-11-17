@@ -16,6 +16,7 @@ Vagrant.configure("2") do |config|
 	master.vm.provision "file", source: "./kubernetes-setup/kube-flannel.yml", destination: "kube-flannel.yml"
         master.vm.provision "file", source: "./kubernetes-setup/calico.yaml", destination: "calico.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/get-etcdctl.sh", destination: "get-etcdctl.sh"
+        master.vm.synced_folder "yaml/",  "/home/vagrant/yaml/"
         master.vm.provision "ansible" do |ansible|
             ansible.playbook = "kubernetes-setup/master-playbook.yml"
         end
