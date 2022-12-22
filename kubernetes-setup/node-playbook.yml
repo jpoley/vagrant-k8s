@@ -72,9 +72,9 @@
       update_cache: yes
     vars:
       packages:
-        - kubelet 
-        - kubeadm 
-        - kubectl         
+        - kubelet=1.25.5-00
+        - kubeadm=1.25.5-00
+        - kubectl=1.25.5-00          
   - name: Copy the join command to server location
     copy: src=join-command dest=/tmp/join-command.sh mode=0777
 
