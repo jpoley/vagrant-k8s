@@ -6,10 +6,7 @@
     apt:
       name: "{{ packages }}"
       state: present
-      update_cache: yes  - name: remove containerd toml 
-    command: rm /etc/containerd/config.toml
-  - name: restart
-    command: sudo systemctl restart containerd
+      update_cache: yes
     vars:
       packages:
       - apt-transport-https
@@ -78,7 +75,6 @@
         - kubelet=1.25.5-00
         - kubeadm=1.25.5-00
         - kubectl=1.25.5-00
-
   - name: remove containerd toml 
     command: rm /etc/containerd/config.toml
   - name: restart containerd
