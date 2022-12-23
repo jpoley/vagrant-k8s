@@ -77,10 +77,11 @@
       packages:
         - kubelet=1.25.5-00
         - kubeadm=1.25.5-00
-        - kubectl=1.25.5-00   
+        - kubectl=1.25.5-00
+
   - name: remove containerd toml 
     command: rm /etc/containerd/config.toml
-  - name: restart
+  - name: restart containerd
     command: sudo systemctl restart containerd               
   - name: Copy the join command to server location
     copy: src=join-command dest=/tmp/join-command.sh mode=0777

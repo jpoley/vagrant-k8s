@@ -78,7 +78,7 @@
         - kubectl=1.25.5-00    
   - name: remove containerd toml 
     command: rm /etc/containerd/config.toml
-  - name: restart
+  - name: restart containerd
     command: sudo systemctl restart containerd
   - name: Initialize the Kubernetes cluster using kubeadm
     command: kubeadm init --apiserver-advertise-address="192.168.56.10" --apiserver-cert-extra-sans="192.168.56.10"  --node-name k8s-master --pod-network-cidr=192.168.56.0/21 --v=6
