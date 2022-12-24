@@ -14,10 +14,14 @@ Vagrant.configure("2") do |config|
         master.vm.network "private_network", ip: "192.168.56.10"
         master.vm.hostname = "k8s-master"
         
+        master.vm.provision :shell, path: "scripts/apt.sh", run: 'always', privileged: true
+
     	master.vm.provision "file", source: "./kubernetes-setup/kube-flannel.yaml", destination: "kube-flannel.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/calico.yaml", destination: "calico.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/tigera-operator.yaml", destination: "tigera-operator.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/custom-resources.yaml", destination: "custom-resources.yaml"
+
+        master.vm.provision "file", source: "./scripts/good-k8s-bash.sh", destination: "good-k8s-bash.sh"
 
         master.vm.provision "file", source: "./kubernetes-setup/get-etcdctl.sh", destination: "get-etcdctl.sh"
         master.vm.synced_folder "yaml/",  "/home/vagrant/yaml/"

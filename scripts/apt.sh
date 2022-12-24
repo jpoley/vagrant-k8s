@@ -1,0 +1,1 @@
+apt install tree git htop -y
