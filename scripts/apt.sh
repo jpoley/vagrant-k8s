@@ -1,1 +1,2 @@
-apt install tree git htop -y
+apt install tree git jq htop -y
+snap install bpytop
