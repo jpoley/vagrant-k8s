@@ -15,6 +15,8 @@ Vagrant.configure("2") do |config|
         master.vm.hostname = "k8s-master"
         
         master.vm.provision :shell, path: "scripts/apt.sh", run: 'always', privileged: true
+        master.vm.provision :shell, path: "scripts/install-trivy.sh", run: 'always', privileged: true
+        master.vm.provision :shell, path: "scripts/install-falco.sh", run: 'always', privileged: true
 
     	master.vm.provision "file", source: "./kubernetes-setup/kube-flannel.yaml", destination: "kube-flannel.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/calico.yaml", destination: "calico.yaml"
