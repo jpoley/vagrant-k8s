@@ -20,6 +20,7 @@ Vagrant.configure("2") do |config|
 
     	master.vm.provision "file", source: "./kubernetes-setup/kube-flannel.yaml", destination: "kube-flannel.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/calico.yaml", destination: "calico.yaml"
+        
         master.vm.provision "file", source: "./kubernetes-setup/tigera-operator.yaml", destination: "tigera-operator.yaml"
         master.vm.provision "file", source: "./kubernetes-setup/custom-resources.yaml", destination: "custom-resources.yaml"
 
@@ -27,6 +28,8 @@ Vagrant.configure("2") do |config|
 
         master.vm.provision "file", source: "./kubernetes-setup/get-etcdctl.sh", destination: "get-etcdctl.sh"
         master.vm.synced_folder "yaml/",  "/home/vagrant/yaml/"
+        master.vm.synced_folder "scripts/",  "/home/vagrant/scripts/"
+
         master.vm.provision "ansible" do |ansible|
             ansible.playbook = "kubernetes-setup/master-playbook.yml"
         end
