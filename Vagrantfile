@@ -38,6 +38,8 @@ Vagrant.configure("2") do |config|
             node.vm.box = IMAGE_NAME
             node.vm.network "private_network", ip: "192.168.56.#{i + 10}"
             node.vm.hostname = "node-#{i}"
+            node.vm.provision :shell, path: "scripts/126.sh", run: 'always', privileged: true
+            node.vm.provision :shell, path: "scripts/1262.sh", run: 'always', privileged: true
             node.vm.provision "ansible" do |ansible|
                 ansible.playbook = "kubernetes-setup/node-playbook.yml"
             end
