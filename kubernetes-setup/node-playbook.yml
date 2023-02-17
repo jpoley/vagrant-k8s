@@ -72,9 +72,9 @@
       update_cache: yes
     vars:
       packages:
-        - kubelet=1.25.5-00
-        - kubeadm=1.25.5-00
-        - kubectl=1.25.5-00
+        - kubelet=1.26.1-00
+        - kubeadm=1.26.1-00
+        - kubectl=1.26.1-00
   - name: remove containerd toml 
     command: rm /etc/containerd/config.toml
   - name: restart containerd

@@ -5,3 +5,5 @@ cd bin
 cp * /usr/bin/
 systemctl start containerd
 
+#apt remove --purge kubelet
+#apt install -y kubelet=1.25.5-00
