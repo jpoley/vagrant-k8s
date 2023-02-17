@@ -77,11 +77,12 @@
         - kubeadm=1.26.1-00
         - kubectl=1.26.1-00
   - name: remove containerd toml 
-    command: rm /etc/containerd/config.toml
+    command: rm -f /etc/containerd/config.toml
   - name: restart containerd
     command: sudo systemctl restart containerd
   - name: Initialize the Kubernetes cluster using kubeadm
-    command: kubeadm init --apiserver-advertise-address="192.168.56.10" --apiserver-cert-extra-sans="192.168.56.10"  --kubernetes-version 1.26.1 --node-name k8s-master --pod-network-cidr=192.168.56.0/21 --cri-socket=unix:///var/run/cri-dockerd.sock --image-repository=registry.k8s.io --v=6
+  #--cri-socket=unix:///var/run/cri-dockerd.sock 
+    command: kubeadm init --apiserver-advertise-address="192.168.56.10" --apiserver-cert-extra-sans="192.168.56.10"  --kubernetes-version 1.26.1 --node-name k8s-master --pod-network-cidr=192.168.56.0/21 --image-repository=registry.k8s.io --v=6
   - name: Setup kubeconfig for vagrant user
     command: "{{ item }}"
     with_items:
