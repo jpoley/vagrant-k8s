@@ -78,6 +78,8 @@ Offical exam objectives you review and understand in order to pass the test.
     - :triangular_flag_on_post: [Kube-bench](https://github.com/aquasecurity/kube-bench) - Checks whether Kubernetes is deployed securely by running the checks documented ain the CIS Kubernetes Benchmark.
 3. Properly set up [Ingress objects with security control](https://kubernetes.io/docs/concepts/services-networking/ingress/#tls)
 4. [Protect node metadata and endpoints](https://kubernetes.io/docs/tasks/administer-cluster/securing-a-cluster/#restricting-cloud-metadata-api-access)
+5. Minimize use of, and access to, GUI elements
+6. Verify platform binaries before deploying
 
     <details><summary> Using Kubernetes network policy to restrict pods access to cloud metadata </summary>
 
@@ -156,12 +158,11 @@ Offical exam objectives you review and understand in order to pass the test.
  
    * [seccomp which stands for secure computing was originally intended as a means of safely running untrusted compute-bound programs](https://kubernetes.io/docs/tutorials/clusters/seccomp/)
    * [AppArmor can be configured for any application to reduce its potential host attack surface and provide greater in-depth defense.](https://kubernetes.io/docs/tutorials/clusters/apparmor/)
-   * [PSP enforces](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
+   (OLD) [PSP enforces](https://kubernetes.io/docs/concepts/policy/pod-security-policy/)
    * Apply host updates
    * Install minimal required OS fingerprint
    * Protect access to data with permissions
      *  [Restirct allowed hostpaths](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#volumes-and-file-systems)
-
    </details>
 
 2. Minimize IAM roles
