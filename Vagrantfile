@@ -36,6 +36,7 @@ Vagrant.configure("2") do |config|
     (1..N).each do |i|
         config.vm.define "node-#{i}" do |node|
             node.vm.box = IMAGE_NAME
+            node.vm.provision :shell, path: "scripts/apt.sh", run: 'always', privileged: true
             node.vm.provision :shell, inline: "ifconfig eth0 10.2.0.#{i+20} netmask 255.255.255.0 up"
 	    node.vm.network "private_network", ip: "192.168.56.#{i + 20}"
             node.vm.hostname = "node-#{i}"
