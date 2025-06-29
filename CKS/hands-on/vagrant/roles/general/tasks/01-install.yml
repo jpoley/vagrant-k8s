@@ -29,7 +29,7 @@
 
 - name: Add apt repository for stable version
   apt_repository:
-    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
     state: present
 
 - name: Install docker and its dependecies
@@ -63,18 +63,18 @@
 
 - name: Add an apt signing key for Kubernetes
   apt_key:
-    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    url: https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key
     state: present
 
 - name: Adding apt repository for Kubernetes
   apt_repository:
-    repo: deb https://apt.kubernetes.io/ kubernetes-xenial main
+    repo: deb https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /
     state: present
     filename: kubernetes.list
 
 - name: Install Kubernetes binaries
   apt: 
-    name: "{{ item }}={{ k8s_version }}-00"
+    name: "{{ item }}={{ k8s_version }}-1.1"
     state: present
     update_cache: yes
   with_items:
