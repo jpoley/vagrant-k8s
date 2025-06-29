@@ -50,23 +50,28 @@ check_prerequisites() {
     log_header "Checking Prerequisites"
     
     local errors=0
+    local skip_vagrant_checks=${1:-false}
     
-    # Check Vagrant
-    if command -v vagrant &> /dev/null; then
-        local vagrant_version=$(vagrant --version)
-        log_info "✓ Vagrant found: $vagrant_version"
+    # Check Vagrant (skip if requested)
+    if [[ "$skip_vagrant_checks" != true ]]; then
+        if command -v vagrant &> /dev/null; then
+            local vagrant_version=$(vagrant --version)
+            log_info "✓ Vagrant found: $vagrant_version"
+        else
+            log_error "✗ Vagrant not found. Please install Vagrant."
+            ((errors++))
+        fi
+        
+        # Check VirtualBox (skip if requested)
+        if command -v vboxmanage &> /dev/null; then
+            local vbox_version=$(vboxmanage --version)
+            log_info "✓ VirtualBox found: $vbox_version"
+        else
+            log_error "✗ VirtualBox not found. Please install VirtualBox."
+            ((errors++))
+        fi
     else
-        log_error "✗ Vagrant not found. Please install Vagrant."
-        ((errors++))
-    fi
-    
-    # Check VirtualBox
-    if command -v vboxmanage &> /dev/null; then
-        local vbox_version=$(vboxmanage --version)
-        log_info "✓ VirtualBox found: $vbox_version"
-    else
-        log_error "✗ VirtualBox not found. Please install VirtualBox."
-        ((errors++))
+        log_info "⚠ Skipping Vagrant and VirtualBox checks (--skip-vagrant flag used)"
     fi
     
     # Check Ansible
@@ -282,7 +287,7 @@ main() {
     
     if [ "$cluster_only" != true ]; then
         # Check prerequisites
-        if ! check_prerequisites; then
+        if ! check_prerequisites "$skip_vagrant"; then
             ((total_errors++))
         fi
         
