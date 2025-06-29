@@ -1,8 +1,9 @@
-.PHONY: help validate up down destroy status test test-cluster test-networking test-storage test-services clean
+.PHONY: help validate up down destroy status test test-cluster test-networking test-storage test-services clean setup
 
 # Default target
 help:
 	@echo "Available targets:"
+	@echo "  setup           - Set up environment (install prerequisites)"
 	@echo "  validate        - Validate setup and prerequisites"
 	@echo "  up              - Start the Kubernetes cluster"
 	@echo "  down            - Stop the cluster (suspend VMs)"
@@ -17,6 +18,9 @@ help:
 	@echo "  ssh-master      - SSH into master node"
 	@echo "  ssh-node1       - SSH into worker node 1"
 	@echo "  ssh-node2       - SSH into worker node 2"
+
+setup:
+	./setup.sh
 
 validate:
 	./validate.sh
