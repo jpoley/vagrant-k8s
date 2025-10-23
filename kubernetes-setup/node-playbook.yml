@@ -22,7 +22,7 @@
 
   - name: Add apt repository for stable version
     apt_repository:
-      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable
+      repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu noble stable
       state: present
 
   - name: Install docker and its dependecies
@@ -56,25 +56,25 @@
     when: ansible_swaptotal_mb > 0
   - name: Add an apt signing key for Kubernetes
     apt_key:
-      url: https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key
+      url: https://pkgs.k8s.io/core:/stable:/v1.34/deb/Release.key
       state: present
 
   - name: Adding apt repository for Kubernetes
     apt_repository:
-      repo: deb https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /
+      repo: deb https://pkgs.k8s.io/core:/stable:/v1.34/deb/ /
       state: present
       filename: kubernetes.list
 
   - name: Install Kubernetes binaries
-    apt: 
+    apt:
       name: "{{ packages }}"
       state: present
       update_cache: yes
     vars:
       packages:
-        - kubelet=1.28.2-1.1
-        - kubeadm=1.28.2-1.1
-        - kubectl=1.28.2-1.1
+        - kubelet=1.34.1-1.1
+        - kubeadm=1.34.1-1.1
+        - kubectl=1.34.1-1.1
   - name: remove containerd toml 
     command: rm -f /etc/containerd/config.toml
   - name: restart containerd

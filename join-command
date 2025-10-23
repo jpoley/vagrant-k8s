@@ -1,0 +1,1 @@
+kubeadm join 192.168.56.10:6443 --token 7cmjlc.fucibl2cao6f26lx --discovery-token-ca-cert-hash sha256:73ab9f7e31d2f63a9acd353c64355fa621ec07809552fa26858f8228e2d74be5 

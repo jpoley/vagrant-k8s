@@ -22,9 +22,10 @@ Ansible is an infrastructure automation engine that automates software configura
 It's an alternative to a more true virtualized multinode cluster for playing and learning, since most cloud providers charge $.10/hr for their k8s control planes, and sometimes minikube isn't enough. Feedback welcome.
 
 ## Current Configuration
-- **Kubernetes Version:** 1.28.2 (LTS)
+- **Kubernetes Version:** 1.34.1
 - **Container Runtime:** containerd
 - **Network Plugin:** Calico
+- **Base Image:** Ubuntu 24.04 LTS (Noble Numbat)
 - **Nodes:** 1 master + 2 worker nodes
 - **VM Resources:** 5GB RAM, 2 CPU per node
 

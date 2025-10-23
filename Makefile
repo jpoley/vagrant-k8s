@@ -1,4 +1,4 @@
-.PHONY: help validate up down destroy status test test-cluster test-networking test-storage test-services clean setup
+.PHONY: help validate up down destroy status test test-cluster test-networking test-storage test-services test-nginx test-deployment clean setup
 
 # Default target
 help:
@@ -10,10 +10,12 @@ help:
 	@echo "  destroy         - Completely destroy the cluster"
 	@echo "  status          - Show cluster status"
 	@echo "  test            - Run all tests"
+	@echo "  test-deployment - Run comprehensive deployment test (K8s + Ubuntu versions + nginx)"
 	@echo "  test-cluster    - Run cluster functionality tests"
 	@echo "  test-networking - Run networking tests"
 	@echo "  test-storage    - Run storage tests"
 	@echo "  test-services   - Run service tests"
+	@echo "  test-nginx      - Run nginx deployment and connectivity test"
 	@echo "  clean           - Clean up test resources"
 	@echo "  ssh-master      - SSH into master node"
 	@echo "  ssh-node1       - SSH into worker node 1"
@@ -39,6 +41,9 @@ status:
 
 test: test-cluster test-networking test-storage test-services
 
+test-deployment:
+	./test_deployment.sh
+
 test-cluster:
 	./tests/test_cluster.sh
 
@@ -50,6 +55,9 @@ test-storage:
 
 test-services:
 	./tests/test_services.sh
+
+test-nginx:
+	./tests/test_nginx_deployment.sh
 
 clean:
 	-kubectl delete namespace test-namespace --ignore-not-found=true
